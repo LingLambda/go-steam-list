@@ -24,7 +24,7 @@ type App struct {
 }
 
 const FILE_NAME = "app.json"
-const INTERVAL = 10 * time.Second
+const INTERVAL = 30 * time.Second
 
 var is_init = false
 
@@ -80,7 +80,7 @@ func update_json() {
 	}
 
 	if has_new {
-		new_app_count := 0
+		new_app_count := len(new_app)
 		local_apps = append(local_apps, new_app...)
 		log.Printf("新增 %d 个应用\n", new_app_count)
 		write_json(local_apps)
