@@ -24,16 +24,17 @@ type App struct {
 }
 
 const FILE_NAME = "app.json"
-const INTERVAL = 30 * time.Second
+const INTERVAL = 120 * time.Second
 
 var is_init = false
 
 func main() {
+	log.Printf("正在进行首次运行...")
+	update_json() //启动时运行一次
 
 	log.Printf("启动定时更新 间隔%v\n", INTERVAL)
 	ticker := time.NewTicker(INTERVAL)
 	done := make(chan bool)
-
 	go func() {
 		for {
 			select {
